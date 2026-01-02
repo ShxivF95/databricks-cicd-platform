@@ -1,0 +1,15 @@
+resources:
+  pipelines:
+    PL_bronze_ingestion:
+      name: PL_bronze_ingestion
+
+      libraries:
+        - file:
+            path: ../src/DAB_etl/etl_bronze.py
+
+      schema: ${var.schema}
+      catalog: ${var.catalog}
+
+      continuous: false
+      photon: true
+      serverless: true
