@@ -7,7 +7,7 @@ resources:
         - file:
             path: ../src/DAB_etl/etl_silver.py
 
-      schema: silver_stg
+      #schema: silver_stg
       catalog: surakshadb
 
       continuous: false
