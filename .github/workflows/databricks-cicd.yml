@@ -1,0 +1,52 @@
+name: Databricks CI/CD
+
+on:
+  pull_request:
+    branches: [ main ]
+
+  push:
+    branches: [ main ]
+
+jobs:
+  ci:
+    name: CI - Validate Bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@v0.221.0
+
+      - name: Authenticate to Databricks
+        run: |
+          databricks auth login \
+            --host ${{ secrets.DATABRICKS_HOST }} \
+            --client-id ${{ secrets.DATABRICKS_CLIENT_ID }} \
+            --client-secret ${{ secrets.DATABRICKS_CLIENT_SECRET }} \
+            --tenant-id ${{ secrets.DATABRICKS_TENANT_ID }}
+
+      - name: Validate bundle (dev)
+        run: databricks bundle validate -t dev
+
+  deploy-dev:
+    name: CD - Deploy Dev
+    needs: ci
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: databricks/setup-cli@v0.221.0
+
+      - name: Authenticate to Databricks
+        run: |
+          databricks auth login \
+            --host ${{ secrets.DATABRICKS_HOST }} \
+            --client-id ${{ secrets.DATABRICKS_CLIENT_ID }} \
+            --client-secret ${{ secrets.DATABRICKS_CLIENT_SECRET }} \
+            --tenant-id ${{ secrets.DATABRICKS_TENANT_ID }}
+
+      - name: Deploy to Dev
+        run: databricks bundle deploy -t dev
