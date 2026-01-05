@@ -7,8 +7,8 @@ resources:
         - file:
             path: ../src/DAB_etl/etl_bronze.py
       
-      catalog: surakshadb
-      schema: bronze_stg
+      catalog: ${var.catalog}
+      target: ${var.pipeline_schema}
       
       continuous: false
       photon: true 
