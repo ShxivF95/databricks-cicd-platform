@@ -5,7 +5,7 @@ resources:
 
       libraries:
         - file:
-            path: ../src/DAB_etl/etl_bronze.py
+            path: ../src/DAB_etl/etl_silver.py
       
       catalog: ${var.catalog}
       target: ${var.silver_schema}
