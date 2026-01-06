@@ -7,7 +7,7 @@ from pyspark.sql.functions import *
 )
 
 def gold_dim_patients():
-    df = dlt.read("LIVE.sil_patientsdata")\
+    df = spark.readStream.table("surakshadb.silver_stg.sil_patientsdata")\
         .filter("__END_AT is NULL")\
             .select("Patient_ID",
                "Patient_Name",
@@ -25,7 +25,7 @@ def gold_dim_patients():
 
 def gold_routinetests():
     return (
-        dlt.read("LIVE.sil_routinetests")
+        spark.readStream.table("surakshadb.silver_stg.sil_routinetests")
           .withColumn(
               "report_delay_minutes",
               expr(
