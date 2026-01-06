@@ -8,7 +8,7 @@ resources:
             path: ../src/DAB_etl/etl_bronze.py
       
       catalog: ${var.catalog}
-      target: ${var.pipeline_schema}
+      target: ${var.gold_schema}
       
       continuous: false
       photon: true 

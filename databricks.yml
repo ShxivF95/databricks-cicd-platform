@@ -6,13 +6,18 @@ include:
 
 variables:
   catalog:
-    description: The Unity Catalog to use
     default: surakshadb
 
-  pipeline_schema:
-    description: The schema to use
-    default: db_stg
+  bronze_schema:
+    default: bronze_stg
 
+  silver_schema:
+    default: silver_stg
+
+  gold_schema:
+    default: gold_curated
+
+    
 targets:
   dev:
     mode: development
