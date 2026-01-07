@@ -1,5 +1,8 @@
 import dlt
 
+catalog_name = spark.conf.get("pipelines.catalog")
+schema_name = spark.conf.get("pipelines.target")
+
 # ===================== acxtestdone (CDC SCD-1) ================================================
 
 @dlt.view(
@@ -7,7 +10,7 @@ import dlt
 )
 
 def vw_br_acxtestdone():
-    return spark.readStream.table("surakshadb.bronze_stg.br_acxtestdone")
+    return spark.readStream.table(f"{catalog_name}.{schema_name}.br_acxtestdone")
 
 # Create an empty streaming table for silver layer
 
@@ -31,7 +34,7 @@ dlt.create_auto_cdc_flow(
     comment="Silver append-only attendance fact table"
 )
 def sil_doctorattendance():
-    return spark.readStream.table("surakshadb.bronze_stg.br_doctorattendance")
+    return spark.readStream.table(f"{catalog_name}.{schema_name}.br_doctorattendance")
 
 # ===================== routinetests (append-only) ===============================================
 
@@ -40,7 +43,7 @@ def sil_doctorattendance():
     comment="Silver append-only routine test facts"
 )
 def sil_routinetests():
-    return spark.readStream.table("surakshadb.bronze_stg.br_routinetests")
+    return spark.readStream.table(f"{catalog_name}.{schema_name}.br_routinetests")
 
 # ===================== patientsdatadone (CDC SCD-2) ================================================
 
@@ -49,8 +52,7 @@ def sil_routinetests():
 )
 
 def vw_br_patientsdata():
-    return spark.readStream.table("surakshadb.bronze_stg.br_patientsdata")
-
+    return spark.readStream.table(f"{catalog_name}.{schema_name}.br_patientsdata")
 
 # create an empty streaming table for silver layer
 
