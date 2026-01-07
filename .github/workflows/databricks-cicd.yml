@@ -3,13 +3,19 @@ name: Databricks CI/CD
 on:
   pull_request:
     branches: [ main ]
+
   push:
-    branches: [ main ]
+    branches: 
+      - main
+      - feature/*
+      - sdl_IT
+
 
 jobs:
   ci:
     name: CI - Validate Bundle
     runs-on: ubuntu-latest
+
     env:
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_PAT }}
@@ -24,11 +30,12 @@ jobs:
       - name: Validate Prod Target
         run: databricks bundle validate --target prod
 
+
   deploy-dev:
     name: CD - Deploy Dev
     needs: ci
-    # Only deploy on push to main (or adjust if you want dev on every push)
-    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+    
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/feature/') || github.ref == 'refs/heads/sdl_IT'
     runs-on: ubuntu-latest
 
     env:
@@ -42,18 +49,21 @@ jobs:
       - name: Deploy to Dev
         run: databricks bundle deploy --target dev
 
+
   deploy-prod:
     name: CD - Deploy Prod
     needs: ci
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    if: github.event_name == 'push' && github.ref == 'refs/head/main'
     runs-on: ubuntu-latest
+
     env:
-      # If your Prod workspace is different, use a separate secret
       DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }} 
       DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_PAT }}
 
     steps:
       - uses: actions/checkout@v4
       - uses: databricks/setup-cli@v0.221.0
+      
       - name: Deploy to Prod
         run: databricks bundle deploy --target prod
