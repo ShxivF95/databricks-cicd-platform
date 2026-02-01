@@ -3,6 +3,9 @@ resources:
     symptoms_table:
       name: symptoms_table
 
+      run_as:
+        user_name: shiv@suraksha555.onmicrosoft.com
+
       queue:
         enabled: true
 
