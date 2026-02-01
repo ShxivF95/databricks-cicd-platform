@@ -1,0 +1,20 @@
+resources:
+  jobs:
+    hiring_table:
+      name: hiring_table
+
+      queue:
+        enabled: true
+        performance_target: PERFORMANCE_OPTIMIZED
+
+      environments:
+        - environment_key: hiring_table_environment
+          spec:
+            environment_version: "4"
+
+      tasks:
+        - task_key: hiring_table
+          notebook_task:
+            notebook_path: ../src/DAB_etl/dim_hiring.ipynb
+            source: GIT
+          environment_key: hiring_table_environment

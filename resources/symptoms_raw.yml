@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    symptoms_raw:
+      name: symptoms_raw
+      queue:
+        enabled: true
+        performance_target: PERFORMANCE_OPTIMIZED
+      tasks:
+        - task_key: symptoms_raw
+          notebook_task:
+            notebook_path: ../src/DAB_etl/Symptoms_Raw.ipynb
+            source: GIT
