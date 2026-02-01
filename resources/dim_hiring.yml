@@ -19,4 +19,5 @@ resources:
       environments:
         - environment_key: hiring_table_environment
           spec:
+            client: "serverless"
             environment_version: "4"
