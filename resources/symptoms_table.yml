@@ -12,4 +12,4 @@ resources:
       tasks:
         - task_key: symptoms_table
           notebook_task:
-            notebook_path: ../src/DAB_etl/Symptoms_table.ipynb
+            notebook_path: ./src/DAB_etl/Symptoms_table.ipynb
