@@ -12,7 +12,7 @@ resources:
       tasks:
         - task_key: hiring_table
           notebook_task:
-            notebook_path: ./src/DAB_etl/dim_hiring.ipynb
+            notebook_path: ../src/DAB_etl/dim_hiring.ipynb
             
       #     environment_key: hiring_table_environment
 

@@ -12,5 +12,5 @@ resources:
       tasks:
         - task_key: hiring_raw
           notebook_task:
-            notebook_path: ./src/DAB_etl/hiring_raw.ipynb
+            notebook_path: ../src/DAB_etl/hiring_raw.ipynb
         
