@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    hiring_raw:
+      name: hiring_raw
+
+      run_as:
+        user_name: shivv@suraksha555.onmicrosoft.com
+
+
+      queue:
+        enabled: true
+      
+      tasks:
+        - task_key: hiring_raw
+          notebook_task:
+            notebook_path: ../src/DAB_etl/hiring_raw.ipynb
+        
