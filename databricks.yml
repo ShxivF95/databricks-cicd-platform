@@ -24,7 +24,7 @@ targets:
     default: true
 
     workspace:
-      host: https://adb-7405616458494901.1.azuredatabricks.net
+      host: https://adb-7405605784158263.3.azuredatabricks.net
 
     variables:
       catalog: surakshadb
@@ -35,11 +35,11 @@ targets:
     mode: production
 
     workspace:
-      host: https://adb-7405616458494901.1.azuredatabricks.net
-      # root_path: /Shared/.bundle/${bundle.name}/${bundle.target} 
+      host: https://adb-7405605784158263.3.azuredatabricks.net
+      root_path: /Shared/.bundle/${bundle.name}/${bundle.target} 
 
     # run_as:
-    #   user_name: shiv@suraksha555.onmicrosoft.com
+    #   user_name: shivv@suraksha555.onmicrosoft.com
 
     variables:
       catalog: surakshadb_prod

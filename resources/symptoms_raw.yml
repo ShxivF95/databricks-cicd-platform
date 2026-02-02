@@ -3,8 +3,9 @@ resources:
     symptoms_raw:
       name: symptoms_raw
 
-      # run_as:
-      #   user_name: shiv@suraksha555.onmicrosoft.com
+      run_as:
+        user_name: shivv@suraksha555.onmicrosoft.com
+
 
       queue:
         enabled: true
