@@ -1,0 +1,41 @@
+resources:
+  jobs:
+    ACX_LIS:
+      name: ACX_LIS
+
+      run_as:
+        user_name: shivv@suraksha555.onmicrosoft.com
+
+      queue:
+        enabled: true
+
+
+      tasks:
+        - task_key: ACX_LIS
+          notebook_task:
+            notebook_path: ../src/DAB_etl/LIS_table.ipynb
+            # source: WORKSPACE
+
+ 
+
+
+
+
+
+        
+
+
+
+
+            
+
+
+
+
+
+            
+      
+
+
+
+        

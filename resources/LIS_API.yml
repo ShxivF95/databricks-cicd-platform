@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    LIS_API:
+      name: LIS_API
+
+      run_as:
+        user_name: shivv@suraksha555.onmicrosoft.com
+
+      queue:
+        enabled: true
+
+      tasks:
+        - task_key: LIS_API
+          notebook_task:
+            notebook_path: ../src/DAB_etl/LIS_raw.ipynb
+            # source: WORKSPACE
+     
+      
+
+
+
