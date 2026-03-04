@@ -1,0 +1,46 @@
+resources:
+  jobs:
+    Watermark_Merged:
+      name: Watermark_Merged
+
+      run_as:
+        user_name: shivv@suraksha555.onmicrosoft.com
+
+      queue:
+        enabled: true
+
+
+      tasks:
+        - task_key: Watermark_Merged
+          notebook_task:
+            notebook_path: ../src/DAB_etl/Watermark_Merged.ipynb
+            # source: WORKSPACE
+
+ 
+
+
+
+
+
+        
+
+
+
+
+            
+
+
+
+
+
+            
+      
+
+
+
+        
+
+
+
+
+
