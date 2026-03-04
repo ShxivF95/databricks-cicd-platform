@@ -1,0 +1,45 @@
+resources:
+  jobs:
+    CDC_Merged:
+      name: CDC_Merged
+
+      run_as:
+        user_name: shivv@suraksha555.onmicrosoft.com
+
+      queue:
+        enabled: true
+
+
+      tasks:
+        - task_key: CDC_Merged
+          notebook_task:
+            notebook_path: ../src/DAB_etl/CDC_Merged.ipynb
+            # source: WORKSPACE
+
+ 
+
+
+
+
+
+        
+
+
+
+
+            
+
+
+
+
+
+            
+      
+
+
+
+        
+
+
+
+
